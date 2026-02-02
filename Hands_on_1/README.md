@@ -80,7 +80,7 @@ OPENAI_API_KEY = "your-api-key"
 ## W4 Advanced RAG 챗봇
 - 실행: https://w4-rag-chatbot-advanced.streamlit.app/
 - W3 RAG 챗봇에 Hybrid Search 기법을 추가한 챗봇
-- 
+ 
 ---
 * 링크를 걸어둔 Streamlit app은 2월 5일까지만 접속 가능합니다.
 
