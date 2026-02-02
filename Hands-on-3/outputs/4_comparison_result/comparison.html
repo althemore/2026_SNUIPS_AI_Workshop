@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Few-shot vs Agentic 리뷰 비교</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.8;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            font-size: 1.5em;
+        }
+
+        h3 {
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        h4 {
+            color: #666;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .timestamp {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .pros, .cons {
+            padding: 20px;
+            border-radius: 8px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .pros {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+
+        .cons {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+
+        .pros h3 {
+            color: #4caf50;
+            margin-top: 0;
+        }
+
+        .cons h3 {
+            color: #2196f3;
+            margin-top: 0;
+        }
+
+        .meta-box {
+            background-color: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .score {
+            display: inline-block;
+            background-color: #2196f3;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .review-content {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        .review-content p {
+            margin: 10px 0;
+        }
+
+        .review-content h3 {
+            color: #2c3e50;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .review-content h4 {
+            color: #34495e;
+        }
+
+        .review-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .review-content li {
+            margin: 5px 0;
+        }
+
+        .review-content strong {
+            color: #2c3e50;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+
+        @media print {
+            .pros, .cons {
+                max-height: none;
+                overflow: visible;
+            }
+
+            body {
+                background-color: white;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Few-shot vs Agentic 리뷰 비교</h1>
+<p class="timestamp">생성: 2026-02-03 00:19:43</p>
+
+<h2>방식 비교</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Few-shot Reviewer</th>
+<th>agentic-paper-review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>기반</strong></td>
+<td>Transparent Peer Review 예시</td>
+<td>9노드 워크플로우</td>
+</tr>
+<tr>
+<td><strong>모델</strong></td>
+<td>gemma-3-12b-it</td>
+<td>gemini-2.5-flash</td>
+</tr>
+<tr>
+<td><strong>웹검색</strong></td>
+<td>없음</td>
+<td>있음 (관련 논문 탐색)</td>
+</tr>
+<tr>
+<td><strong>리플렉션</strong></td>
+<td>없음</td>
+<td>있음 (자기 검토)</td>
+</tr>
+<tr>
+<td><strong>Few-shot 예시</strong></td>
+<td>있음 (Human Review)</td>
+<td>없음</td>
+</tr>
+<tr>
+<td><strong>최종 점수</strong></td>
+<td>-</td>
+<td><span class="score">5.1/10</span></td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>리뷰 내용 비교</h2>
+
+<div class="pros-cons">
+    <div class="pros">
+        <h3>🟢 Few-shot Reviewer</h3>
+        <div class="meta-box">
+            <strong>모델:</strong> gemma-3-12b-it<br>
+            <strong>방식:</strong> Transparent Peer Review 예시 기반 (단일 프롬프트)
+        </div>
+        <div class="review-content"><p><h3>논문 리뷰: The Longitudinal Association Between Social Media Usage, Geographic Location, and Trait Anxiety in Adolescents: An Evolutionary Perspective</h3></p><p><strong>1. 요약 (Summary)</strong></p><p>본 논문은 캘리포니아 주 내 세 지역의 청소년을 대상으로 소셜 미디어 사용, 거주 지역(기후 변화 영향 지역과의 근접성), 그리고 성격 불안의 장기적인 연관성을 조사한 연구입니다. 연구 결과, 소셜 미디어 사용과 성격 불안 사이에 유의미한 양의 상관관계가 있으며, 기후 변화 영향 지역에 거주하는 청소년의 불안 수준이 더 높다는 것을 확인했습니다. 진화론적 관점에서 이러한 결과를 해석하고, 청소년의 정신 건강에 대한 시사점을 제시하고 있습니다.</p><p><strong>2. 강점 (Strengths)</strong></p><p>*   <strong>중요한 연구 주제:</strong> 청소년의 정신 건강, 소셜 미디어 사용, 그리고 기후 변화라는 현대 사회의 중요한 문제들을 다루고 있어 사회적 의미가 큽니다. 특히, 세 가지 요인의 복합적인 연관성을 탐구한 점은 주목할 만합니다.<br>*   <strong>장기적인 연구 설계:</strong> 2년 동안 데이터를 수집하여 시간의 흐름에 따른 변화를 파악하려는 시도는 연구의 신뢰도를 높이는 데 기여합니다.<br>*   <strong>다양한 변수 고려:</strong> 소셜 미디어 사용 시간, 거주 지역의 기후 변화 영향 정도, 그리고 성격 불안을 측정하여 다각적인 분석을 시도했습니다.<br>*   <strong>진화론적 관점의 적용:</strong> 연구 결과를 진화론적 관점에서 해석하려는 시도는 연구에 깊이를 더하고, 새로운 해석의 가능성을 제시합니다.</p><p><strong>3. 약점 (Weaknesses)</strong></p><p>*   <strong>상호작용 효과의 부재:</strong> 소셜 미디어 사용과 거주 지역 간의 상호작용 효과가 유의미하지 않았다는 점은 연구 결과의 핵심적인 부분을 설명하지 못하는 한계로 작용합니다. 상호작용 효과가 나타나지 않은 이유에 대한 심층적인 분석이 필요합니다.<br>*   <strong>자기 보고식 측정의 한계:</strong> STAI와 소셜 미디어 사용 설문 모두 자기 보고식 측정 도구를 사용했기 때문에 응답자의 주관적인 편향이 개입될 가능성이 있습니다. 객관적인 측정 지표를 추가하거나, 다른 측정 방법론을 고려해야 합니다.<br>*   <strong>기후 변화 영향 점수의 주관성:</strong> 기후 변화 영향 점수를 연구팀이 직접 개발했다는 점은 점수의 객관성과 타당성에 대한 의문을 제기합니다. 표준화된 지표를 사용하거나, 점수 산정 과정을 보다 투명하게 공개해야 합니다.<br>*   <strong>표본의 제한성:</strong> 캘리포니아 주 내 세 지역의 청소년만을 대상으로 하였기 때문에 연구 결과를 일반화하는 데 어려움이 있습니다. 다양한 지역과 인구 집단을 포함한 연구가 필요합니다.<br>*   <strong>매개 변수 부족:</strong> 소셜 미디어 사용이 불안에 미치는 영향에 대한 매개 변수를 탐색하지 않았습니다. 예를 들어, 사이버 괴롭힘, 사회적 비교, 수면 부족 등이 매개 변수로 작용할 수 있습니다.</p><p><strong>4. 세부 코멘트</strong></p><p>*   <strong>Introduction:</strong> 기후 변화에 대한 불안(climate anxiety)의 정의와 관련 연구를 좀 더 자세히 소개하면 좋을 것 같습니다. 또한, 진화론적 관점을 적용하는 이유를 명확하게 설명하고, 관련 이론적 배경을 제시해야 합니다.<br>*   <strong>Methods:</strong> 참가자 모집 과정에 대한 구체적인 정보를 더 제공해야 합니다. 예를 들어, 각 학교에서 몇 명의 학생이 참여했는지, 참여율은 어떠했는지 등을 명시해야 합니다. 또한, 기후 변화 영향 점수를 산정하는 데 사용된 구체적인 데이터와 방법을 상세하게 설명해야 합니다.<br>*   <strong>Results:</strong> 통계 분석 결과에 대한 설명을 좀 더 명확하게 제시해야 합니다. 예를 들어, ANOVA 결과에 대한 사후 검정(post-hoc test) 결과를 구체적으로 제시하고, 각 그룹 간의 차이를 명확하게 설명해야 합니다.<br>*   <strong>Discussion:</strong> 상호작용 효과가 유의미하지 않았던 이유에 대한 심층적인 분석을 제시해야 합니다. 예를 들어, 표본 크기의 부족, 측정 도구의 민감도 부족, 또는 다른 변수의 개입 가능성 등을 고려해야 합니다. 또한, 연구 결과의 한계를 명확하게 제시하고, 향후 연구 방향을 구체적으로 제시해야 합니다.</p><p><strong>5. 점수</strong></p><p>*   Soundness: 3/4 (연구 설계 및 분석 방법은 적절하지만, 상호작용 효과의 부재와 자기 보고식 측정의 한계가 존재합니다.)<br>*   Presentation: 3/4 (논문 구성은 논리적이지만, 일부 설명이 부족하고, 통계 분석 결과에 대한 설명이 다소 모호합니다.)<br>*   Contribution: 3/4 (중요한 연구 주제를 다루고, 새로운 관점을 제시했지만, 연구 결과의 일반화 가능성이 제한적입니다.)<br>*   Overall: 7/10 (전반적으로 훌륭한 연구이지만, 몇 가지 개선 사항이 필요합니다.)</p><p><strong>6. 최종 결정</strong>: Weak Accept / Weak Reject</p><p>본 논문은 중요한 연구 주제를 다루고 있으며, 잠재적인 가치를 지니고 있습니다. 하지만, 상호작용 효과의 부재, 자기 보고식 측정의 한계, 기후 변화 영향 점수의 주관성 등 몇 가지 중요한 약점을 가지고 있습니다. 따라서, 저자가 위에서 제시된 코멘트를 반영하여 논문을 수정하고 보완한다면 게재 가능성이 높아질 것입니다. 수정된 논문을 다시 검토할 수 있기를 바랍니다.</p></div>
+    </div>
+    <div class="cons">
+        <h3>🔵 agentic-paper-review</h3>
+        <div class="meta-box">
+            <strong>방식:</strong> 9노드 워크플로우 (웹검색 + 리플렉션)<br>
+            <strong>점수:</strong> <span class="score">5.1/10</span>
+        </div>
+        <div class="review-content"><p><h3>Summary</h3></p><p>This paper investigates the longitudinal association between social media usage, geographic location (specifically, proximity to climate change impacts), and trait anxiety in adolescents. Following 600 adolescents in California over two years, the study utilized self-report measures for social media usage and trait anxiety (STAI-T), and categorized geographic location based on school districts' exposure to climate-related events. The findings indicate a significant positive correlation between social media usage and trait anxiety, and a main effect of geographic location, with adolescents in more climate-impacted areas exhibiting higher anxiety. While a significant increase in anxiety over time was observed, the hypothesized interaction between social media usage and geographic location was not supported. The authors interpret these findings through an evolutionary lens, emphasizing threat detection and social comparison.</p><p><h3>Strengths</h3></p><p>*   <strong>Clear Research Questions and Hypotheses:</strong> The paper clearly articulates its research questions and hypotheses, providing a strong framework for the study.<br>*   <strong>Longitudinal Design:</strong> The two-year longitudinal design is a significant strength, allowing for the investigation of associations over time, which is crucial for understanding developmental phenomena like anxiety. The repeated measures ANOVA showing an increase in anxiety over time is a valuable finding.<br>*   <strong>Relevant and Timely Topic:</strong> The intersection of social media, climate change, and adolescent mental health is highly relevant and timely, addressing pressing concerns for young people in the digital age.<br>*   <strong>Integration of Evolutionary Perspective:</strong> The attempt to integrate an evolutionary perspective (threat detection, social comparison) provides a unique theoretical lens for interpreting the findings, moving beyond purely psychological explanations.<br>*   <strong>Adequate Sample Size:</strong> A sample of 600 adolescents is robust, enhancing the statistical power and generalizability of the findings.<br>*   <strong>Standardized Measure:</strong> The use of the STAI-T, a well-validated and widely accepted measure of anxiety, strengthens the reliability of the anxiety assessment.</p><p><h3>Weaknesses</h3></p><p><em>   <strong>Limited Depth in Longitudinal Analysis:</strong> While the study is longitudinal, the analysis primarily focuses on correlations at Time 2 and a general increase in anxiety. The paper does not fully leverage the longitudinal data to explore how </em>changes<em> in social media usage relate to </em>changes* in anxiety over time, or how geographic location might influence these trajectories.<br>    *   <strong>Suggestion:</strong> Consider employing more sophisticated longitudinal analyses such as cross-lagged panel models or latent growth curve modeling to better understand the temporal dynamics and directional relationships between variables.<br>*   <strong>Vague Operationalization of Key Variables:</strong> The methods for assessing "Social Media Usage" and "Geographic Location/Climate Impact Score" lack sufficient detail, which hinders replicability and confidence in their validity.<br>    *   <strong>Suggestion for Social Media Usage:</strong> Provide examples of specific questions from the self-developed questionnaire. Detail how "hours per day" was aggregated across platforms. Discuss any efforts to validate this novel measure beyond reporting an alpha coefficient.<br>    *   <strong>Suggestion for Geographic Location:</strong> The "climate impact score" is central to the second hypothesis but is not clearly defined or operationalized in the methods. A dedicated subsection should explain its construction, the specific NOAA data used, the weighting/scoring methodology, and how it differentiates the districts numerically. How was this score used in the ANOVA if the results only refer to "District 1," "District 2," etc.?<br>*   <strong>Inconsistent Analytical Approach for Social Media Usage:</strong> The results section reports a Pearson correlation for social media usage (implying continuous data) but then a two-way ANOVA with an F-statistic for social media usage (F(1, 597) = 28.56, p < .001), which typically suggests a categorical variable (e.g., high/low usage). This discrepancy needs clarification. If social media usage was treated as a continuous variable, a regression-based approach would be more appropriate for testing main effects and interactions.<br>    *   <strong>Suggestion:</strong> Clarify how social media usage was handled in the ANOVA. If it was dichotomized, explain the rationale and cutoff point. If it was treated as a continuous predictor, a hierarchical multiple regression would be a more suitable analysis, allowing for the inclusion of continuous predictors and interaction terms without loss of information.<br><em>   <strong>Underdeveloped Evolutionary Perspective:</strong> While mentioned, the evolutionary perspective feels somewhat superficial. It is introduced in the abstract and discussed briefly, but it doesn't deeply inform the hypotheses or the specific mechanisms being tested. For instance, how would an evolutionary lens predict the </em>moderation* effect of geographic location?<br>    *   <strong>Suggestion:</strong> Integrate the evolutionary framework more thoroughly throughout the introduction, explaining how specific evolutionary mechanisms (e.g., vigilance for local threats, group cohesion, social learning) might lead to the hypothesized relationships and moderation effects.</p><p><h3>Detailed Comments</h3></p><p><strong>Abstract</strong><br>*   "a location effect was observed" – This could be more precise, e.g., "a significant main effect of geographic location was observed."<br>*   The evolutionary perspective is mentioned but could be slightly more integrated into the specific findings presented in the abstract.</p><p><strong>Introduction</strong><br>*   The introduction effectively sets the stage, connecting social media, anxiety, and climate change.<br>*   "Despite these individual findings, a critical gap exists in understanding how geographic location... moderates the relationship..." This clearly articulates the study's unique contribution.<br>*   The research questions and hypotheses are well-stated.</p><p><strong>Methods</strong><br>*   <strong>Participants:</strong> The description of the three school districts (Coastal, Central Valley, Mountain) and their associated climate impacts is good, but linking this more directly to the "climate impact score" is essential.<br>*   <strong>Measures:</strong><br>    *   <strong>Social Media Usage Questionnaire:</strong> As noted in weaknesses, more detail is crucial. What platforms were included? How were "hours per day" calculated (e.g., self-estimated, app tracking, average)? What was the range of possible scores?<br>    *   <strong>Geographic Location:</strong> This section is too brief. A dedicated paragraph or subsection is needed to explain:<br>        *   The specific criteria used to define "frequency and severity" of climate-related events.<br>        *   How the "climate impact score" was calculated (e.g., a composite index, specific metrics).<br>        *   The range of possible scores and how the scores of 7.2, 6.5, and 5.8 for the districts were derived.<br>        *   Any validation efforts for this score.<br>*   <strong>Data Analysis:</strong> The description of the ANOVA needs clarification regarding how social media usage (a seemingly continuous variable) was treated. If it was dichotomized, this should be explicitly stated.</p><p><strong>Results</strong><br>*   <strong>Descriptive Statistics:</strong> Providing the mean and SD for trait anxiety and social media usage at both Time 1 and Time 2 would be more informative, especially given the longitudinal design. The climate impact scores are given, but their role in the ANOVA is not explicitly stated in relation to these scores, only district names.<br><em>   <strong>Correlation Analysis:</strong> "A significant positive correlation was found between social media usage and trait anxiety at Time 2 (r = .32, p < .001)." Was this correlation also examined at Time 1? And more importantly, was the </em>change<em> in social media usage correlated with the </em>change* in anxiety?<br>*   <strong>ANOVA Results:</strong><br>    *   The main effect of social media usage (F(1, 597) = 28.56, p < .001) is reported with 1 degree of freedom, strongly suggesting it was treated as a categorical variable (e.g., high vs. low). This needs to be explicitly stated and justified in the Methods.<br>    *   The non-significant interaction effect (F(2, 597) = 1.15, p = .32) directly refutes Hypothesis 2. This should be clearly stated.<br>    *   The repeated measures ANOVA showing an increase in anxiety from Time 1 to Time 2 (F(1, 598) = 12.78, p < .001) is an important finding and should be highlighted more, perhaps with means for Time 1 and Time 2.</p><p><strong>Discussion</strong><br>*   The discussion accurately summarizes the main effects and acknowledges the non-significant interaction.<br><em>   The evolutionary interpretation is interesting but could be more deeply connected to the </em>specific* findings. For example, how does the lack of a significant interaction effect fit (or not fit) with an evolutionary perspective?<br>*   <strong>Limitations:</strong> The stated limitations are appropriate. The "cross-sectional nature of the location data" is a good point, but the "climate impact score" could be designed to capture changes if data were available.<br>*   <strong>Future Research:</strong> The suggestions are solid and logically follow from the limitations and findings.</p><p><h3>Questions for Authors</h3></p><p>1.  Could you provide more specific details on the "self-developed Social Media Usage Questionnaire"? What were the key questions asked, and how was "hours per day" operationalized and calculated across different platforms?<br>2.  Please elaborate on the "climate impact score" for geographic location. How was this score constructed from NOAA data (e.g., specific metrics, weighting, aggregation method)? How does this score numerically differentiate the districts beyond just their names, and how was it incorporated into the ANOVA analysis if the results only refer to "District 1," "District 2," etc.?<br>3.  Regarding the two-way ANOVA, how was "social media usage" treated as a variable? Was it dichotomized (e.g., high vs. low usage), and if so, what was the rationale and cutoff point?<br>4.  Given the longitudinal design, did you analyze the correlation between <em>changes</em> in social media usage and <em>changes</em> in trait anxiety from Time 1 to Time 2? If not, could you comment on why this approach was not taken?<br>5.  Could you discuss potential reasons for the non-significant interaction effect between geographic location and social media usage, especially considering the evolutionary framework? What might this suggest about the interplay of these factors?</p><p><h3>Missing References</h3></p><p>Based on the provided related work context, the following papers appear highly relevant and could strengthen the paper's background and discussion:</p><p>*   <strong>[1] Topic Shifts as a Proxy for Assessing Politicization in Social Media (arXiv:2312.11326v2) by Locatelli et al.:</strong> This paper discusses the politicization of topics like climate change on social media. Given the current paper's focus on climate anxiety and social media, and its evolutionary perspective on threat detection, understanding how climate information is framed and politicized on social media could provide a richer context for the "constant stream of negative news" and its impact on anxiety.<br>*   <strong>[2] Invasive species, extreme fire risk, and toxin release under a changing climate (arXiv:2008.01035v1) by Miner et al.:</strong> This work directly addresses climate change impacts, specifically extreme fire risk, in Mediterranean ecosystems like California. Citing this could provide stronger scientific backing and specific examples for the "frequency and severity of climate-related events" used to define the geographic locations and their climate impact scores.</p><p><h3>Minor Issues</h3></p><p>*   <strong>Abstract:</strong> Consider adding the specific F-statistic and p-value for the main effect of social media usage in the abstract for consistency with the location effect.<br>*   <strong>Methods - Participants:</strong> It would be helpful to state the number of participants from each district, if applicable.<br>*   <strong>Results - Correlation Analysis:</strong> Specify if the correlation was between Time 2 social media usage and Time 2 trait anxiety, or if it involved Time 1 data.<br>*   <strong>Formatting:</strong> Ensure consistent capitalization for "State-Trait Anxiety Inventory" (STAI) throughout.</p><p><h3>Recommendation</h3></p><p>This is a well-conceived and timely study addressing an important area of adolescent mental health. The longitudinal design and the integration of geographic context are significant strengths. However, the paper would benefit substantially from greater methodological detail, particularly regarding the operationalization of social media usage and the climate impact score. Furthermore, a more nuanced analysis of the longitudinal data and a clearer explanation of the analytical approach for social media usage in the ANOVA would enhance its rigor.</p><p>I recommend <strong>Major Revisions</strong> to address the methodological ambiguities, deepen the analytical approach, and more thoroughly integrate the theoretical framework. With these revisions, the paper has the potential to make a significant contribution to the literature on adolescent mental health in the context of social media and climate change.</p></div>
+        <h4>📚 관련 연구</h4><ul><li><a href='https://arxiv.org/abs/2312.11326v2'>Topic Shifts as a Proxy for Assessing Politicization in Soci...</a></li><li><a href='https://arxiv.org/abs/2008.01035v1'>Invasive species, extreme fire risk, and toxin release under...</a></li><li><a href='https://arxiv.org/abs/1503.07557v1'>Precipitation extremes under climate change...</a></li></ul>
+    </div>
+</div>
+
+</body>
+</html>
